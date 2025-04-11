@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 249 89% 75%; /* Purple */
+    --primary: 249 45% 55%; 
+    --primary-foreground: 240 5% 11%; /* Dark Purple */
+    --secondary: 249 45% 55%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* ... keep existing code (card, popover, muted, accent, destructive, border, input, ring, radius variables) */
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 249 89% 75%; /* Purple */
+    --primary: 249 45% 55%;
+    --primary-foreground: 240 5% 11%; /* Dark Purple */
+    --secondary: 249 45% 55%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* ... keep existing code (remaining dark theme variables) */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-[#9b87f5]/10 selection:text-[#9b87f5];
+  }
+  
+  body {
+    @apply bg-[#000000] text-[#9b87f5] antialiased;
+  }
+
+  /* Futuristic scroll bar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#6E59A5]/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#9b87f5]/80;
+  }
+}
+
+/* Graph styling */
+/* ... keep existing code (graph-container, node, link, active-node, transaction-path styles) */
+
+/* Orbit-inspired styling */
+.orbit-graph {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stars-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.space-background {
+  filter: brightness(0.2);
+}
+
+.star {
+  filter: brightness(1.5);
+  animation: twinkle 4s infinite alternate;
+}
+
+.node-circle {
+  transition: r 0.3s ease, fill 0.3s ease;
+}
+
+.pulsating-circle {
+  animation: pulse 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 30% {
+    opacity: 0.4;
+  }
+  70%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    r: 10;
+    opacity: 1;
+  }
+  50% {
+    r: 12;
+    opacity: 0.8;
+  }
+  100% {
+    r: 10;
+    opacity: 1;
+  }
+}
+
+.node-group-1 {
+  z-index: 30;
+}
+
+.node-group-2 {
+  z-index: 20;
+}
+
+.node-group-3 {
+  z-index: 10;
+}
+
+.orbit {
+  animation: rotate 120s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text gradient */
+.text-gradient-purple {
+  @apply bg-gradient-to-br from-[#9b87f5] via-[#7E69AB] to-[#6E59A5] bg-clip-text text-transparent;
+}
+
+/* Futuristic elements */
+.neo-border {
+  @apply shadow-[0_0_15px_rgba(155,135,245,0.15)];
+}
+
+.neo-card {
+  @apply bg-black rounded-lg neo-border backdrop-blur-sm;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(155, 135, 245, 0.5);
+}
+
+.glow-border {
+  box-shadow: 0 0 10px rgba(155, 135, 245, 0.3), inset 0 0 10px rgba(155, 135, 245, 0.1);
+}
+
+.futuristic-grid {
+  background-image: 
+    linear-gradient(to right, rgba(155, 135, 245, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(155, 135, 245, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.8; box-shadow: 0 0 5px rgba(155, 135, 245, 0.3); }
+  50% { opacity: 1; box-shadow: 0 0 15px rgba(155, 135, 245, 0.5); }
+  100% { opacity: 0.8; box-shadow: 0 0 5px rgba(155, 135, 245, 0.3); }
+}
+
+/* New Dev Olympus inspired styles */
+.olympus-bg {
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+}
+
+.olympus-grid {
+  background-image: 
+    linear-gradient(to right, rgba(155, 135, 245, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(155, 135, 245, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.olympus-card {
+  @apply bg-black rounded-lg overflow-hidden;
+}
+
+.olympus-button {
+  @apply bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] text-white px-6 py-3 rounded-md 
+  shadow-[0_0_15px_rgba(155,135,245,0.4)] hover:shadow-[0_0_20px_rgba(155,135,245,0.6)]
+  transition-all duration-300;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.blob-purple {
+  background: radial-gradient(circle, rgba(155, 135, 245, 0.6) 0%, rgba(155, 135, 245, 0) 70%);
+}
+
+.blob-pink {
+  background: radial-gradient(circle, rgba(214, 188, 250, 0.6) 0%, rgba(214, 188, 250, 0) 70%);
+}
+
+@keyframes gradientMovement {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* New Header/Footer animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.header-visible {
+  animation: fadeInDown 0.4s ease-out forwards;
+}
+
+.header-hidden {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+.footer-visible {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.footer-hidden {
+  animation: fadeOut 0.3s ease-out forwards;
+}
